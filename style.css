@@ -1,0 +1,46 @@
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+
+body{
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 20px 10px;
+    background: linear-gradient(to right, #4568dc, #b06ab3);
+}
+
+.container{
+    border : 1px solid black; 
+    display: flex;
+    justify-content: center;   
+    height: 85vh;
+    position: relative;
+}
+
+.controls {
+    align-self: center  ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    position: absolute;
+    left: 10%;
+    transform: translateX(-50%);
+}
+
+.flex-grid{
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    border: 1px solid rgb(89, 255, 24);
+}
+
+
+.grid-item{
+    border: 1px solid lightgray;
+    width: calc(100% / 16);
+}
