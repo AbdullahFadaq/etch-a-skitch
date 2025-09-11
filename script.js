@@ -1,7 +1,9 @@
 const rangeLabel = document.querySelector('.range-label'); //for the label element 
 const rangeInput = document.querySelector("#gridSize");   // the range input that used for selecting the grid size
 const gridContainer = document.querySelector("#grid-container"); //the div in which grid items are created
+const colorSelector = document.querySelector("#colorSelector");
 
+let mouseDown = false;
 let gridSize = rangeInput.value; //initial size of the grid (16)
 rangeLabel.textContent = `${rangeInput.value}x${rangeInput.value}`; // adds the initial value to the label (16)
 
@@ -26,6 +28,16 @@ function createGrid(size){
         gridItem.style.backgroundColor = 'white';
         gridItem.style.width = `calc(100% / ${size})`;
     }
+    attachListeners();
+}
+
+function attachListeners(){
+    const gridItems = document.querySelectorAll('.grid-item');
+    gridItems.forEach( (item) => {
+    item.addEventListener('mousedown',colorGrid);
+    item.addEventListener('mouseenter',colorGrid);
+    item.addEventListener('click',colorGrid);
+});
 }
 
 createGrid(gridSize); // generates initial grid with the initial grid size (16)
@@ -33,6 +45,40 @@ createGrid(gridSize); // generates initial grid with the initial grid size (16)
 rangeInput.addEventListener('input', (e)=>{
     updateLabel(e);
     createGrid(gridSize);
+    
 } );
-// console.log('initial size = '+gridSize+'x'+gridSize);
+
+
+
+const gridItems = document.querySelectorAll('.grid-item');
+
+gridItems.forEach( (item) => {
+    item.addEventListener('mousedown',colorGrid);
+    item.addEventListener('mouseenter',colorGrid);
+    item.addEventListener('click',colorGrid);
+});
+
+
+function colorGrid(e){
+    const currentColor = colorSelector.value;
+
+    if(e.type === "mousedown"){
+        mouseDown = true;
+        e.preventDefault();
+        this.style.backgroundColor = currentColor; 
+    }
+
+    else if(e.type === 'mouseenter' && mouseDown ){
+        this.style.backgroundColor = currentColor;
+    }
+    
+    else if(e.type === 'click'){
+        this.style.backgroundColor = currentColor;
+    }
+}
+
+document.addEventListener('mouseup', () => {
+    mouseDown = false;
+});
+
 
