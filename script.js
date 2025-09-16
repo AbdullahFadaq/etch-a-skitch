@@ -64,19 +64,38 @@ gridItems.forEach( (item) => {
 });
 
 
+// set mode to rainbow
 rainbowMode.addEventListener('click', () => {
     colorMode = "rainbow";
 });
+
+// set mode to static color 
 staticMode.addEventListener('click', ()=>{
     colorMode = "static";
+});
+
+// automatically set color mode to static when interacting with
+// the color selector (when changing the color)
+colorSelector.addEventListener('click', () => {
+    colorMode = "static";
+});
+
+// enable eraser
+eraser.addEventListener('click', () => {
+    colorMode = "eraser";
 });
 
 function colorGrid(e){
     if(colorMode === "static"){
         currentColor = colorSelector.value;
     }
+
     else if(colorMode === "rainbow"){
         currentColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
+    }
+
+    else if(colorMode === "eraser"){
+        currentColor = 'white';
     }
 
     if(e.type === "mousedown"){
