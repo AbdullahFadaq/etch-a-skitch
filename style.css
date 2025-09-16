@@ -11,11 +11,16 @@ body{
     background: linear-gradient(to right, #4568dc, #b06ab3);
 }
 
-.container{
-    border : 1px solid black; 
+.header{
+    text-align: center;
+    padding: 14px 0;
+    font-size: 36px;
+}
+
+.container{ 
     display: flex;
     justify-content: center;   
-    height: 85vh;
+    height: 83vh;
     position: relative;
 }
 
@@ -36,7 +41,6 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 
-    border: 1px solid rgb(89, 255, 24);
 }
 
 
