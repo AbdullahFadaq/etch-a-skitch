@@ -8,12 +8,15 @@ body{
     max-width: 1800px;
     margin: 0 auto;
     padding: 20px 10px;
-    background: linear-gradient(to right, #4568dc, #b06ab3);
+    background: linear-gradient(45deg, #f9f5f0 0%, #f0f2f5 100%);
+    font-family: "Zain", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .header{
     text-align: center;
-    padding: 14px 0;
+    padding: 12px 0;
     font-size: 36px;
 }
 
@@ -30,11 +33,83 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
     position: absolute;
     left: 10%;
     transform: translateX(-50%);
 }
+
+#colorSelector{
+    padding: 0;
+    cursor: pointer;
+    appearance: none;
+    background-color: none;
+    width: 60px;
+    height: 60px;
+    border: 3px solid #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 0 2px #e0e0e0, 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease
+}
+
+#colorSelector:hover {
+    box-shadow: 0 0 0 2px #bdbdbd, 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+        
+#colorSelector:focus {
+    box-shadow: 0 0 0 2px #888, 0 4px 12px rgba(0, 0, 0, 0.15); 
+}
+
+#gridSize{
+    height: 12px;
+    background: #f0f0f0;
+    border-radius: 6px;
+    border: 2px solid #e0e0e0;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    width: 130%;
+}
+
+#gridSize::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    background: #444340;
+    border: 3px solid white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+#gridSize:focus {
+    outline: none;
+}
+
+
+button {
+    width: 150px;
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+}
+
+button:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
 
 .flex-grid{
     width: 800px;
