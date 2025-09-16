@@ -5,6 +5,7 @@ const colorSelector = document.querySelector("#colorSelector");
 const staticMode = document.querySelector(".static-color");
 const rainbowMode = document.querySelector(".rainbow-mode");
 const eraser = document.querySelector(".eraser");
+const clearButton = document.querySelector(".clear");
 
 let gridSize = rangeInput.value; //initial size of the grid (16)
 rangeLabel.textContent = `${rangeInput.value}x${rangeInput.value}`; // adds the initial value to the label (16)
@@ -115,6 +116,10 @@ function colorGrid(e){
 
 document.addEventListener('mouseup', () => {
     mouseDown = false;
+});
+
+clearButton.addEventListener('click', () => {
+    createGrid(gridSize);
 });
 
 
