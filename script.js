@@ -6,12 +6,14 @@ const staticMode = document.querySelector(".static-color");
 const rainbowMode = document.querySelector(".rainbow-mode");
 const eraser = document.querySelector(".eraser");
 const clearButton = document.querySelector(".clear");
+const gridLinesButton = document.querySelector(".grid-lines");
 
 let gridSize = rangeInput.value; //initial size of the grid (16)
 rangeLabel.textContent = `${rangeInput.value}x${rangeInput.value}`; // adds the initial value to the label (16)
 let mouseDown = false; // indicating if mouse 1 is being held down
 let currentColor = colorSelector.value;
 let colorMode = "static";
+let gridLines = true;
 
 
 // a function to chnage the label of the range based on its current value.
@@ -30,6 +32,9 @@ function createGrid(size){
     for (let index = 0; index < size*size; index++) {
         const gridItem = document.createElement('div');
         gridItem.classList.add("grid-item");
+        if(!gridLines){
+           gridItem.classList.add("no-border"); 
+        }
         gridContainer.appendChild(gridItem);
         gridItem.style.backgroundColor = 'white';
         gridItem.style.width = `calc(100% / ${size})`;
@@ -119,8 +124,29 @@ document.addEventListener('mouseup', () => {
 });
 
 clearButton.addEventListener('click', () => {
+    // color mode set to static when clearing the grid while eraser is enabled
+    if(colorMode === "eraser")
+        colorMode = "static"; 
+
     createGrid(gridSize);
 });
 
+gridLinesButton.addEventListener('click', toggleGridLines);
 
+function toggleGridLines() {
+    gridLines = !gridLines; // inverts value from true to false and vice versa
+
+    const gridItems = document.querySelectorAll(".grid-item");
+    if(gridLines){
+        gridItems.forEach((item) => {
+            item.classList.remove("no-border");
+        })
+    }
+
+    else{
+        gridItems.forEach((item) => {
+            item.classList.add("no-border");
+        })
+    }
+}
 
