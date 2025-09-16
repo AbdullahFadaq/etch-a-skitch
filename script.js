@@ -2,10 +2,15 @@ const rangeLabel = document.querySelector('.range-label'); //for the label eleme
 const rangeInput = document.querySelector("#gridSize");   // the range input that used for selecting the grid size
 const gridContainer = document.querySelector("#grid-container"); //the div in which grid items are created
 const colorSelector = document.querySelector("#colorSelector");
+const staticMode = document.querySelector(".static-color");
+const rainbowMode = document.querySelector(".rainbow-mode");
+const eraser = document.querySelector(".eraser");
 
-let mouseDown = false;
 let gridSize = rangeInput.value; //initial size of the grid (16)
 rangeLabel.textContent = `${rangeInput.value}x${rangeInput.value}`; // adds the initial value to the label (16)
+let mouseDown = false; // indicating if mouse 1 is being held down
+let currentColor = colorSelector.value;
+let colorMode = "static";
 
 
 // a function to chnage the label of the range based on its current value.
@@ -59,8 +64,20 @@ gridItems.forEach( (item) => {
 });
 
 
+rainbowMode.addEventListener('click', () => {
+    colorMode = "rainbow";
+});
+staticMode.addEventListener('click', ()=>{
+    colorMode = "static";
+});
+
 function colorGrid(e){
-    const currentColor = colorSelector.value;
+    if(colorMode === "static"){
+        currentColor = colorSelector.value;
+    }
+    else if(colorMode === "rainbow"){
+        currentColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
+    }
 
     if(e.type === "mousedown"){
         mouseDown = true;
@@ -80,5 +97,6 @@ function colorGrid(e){
 document.addEventListener('mouseup', () => {
     mouseDown = false;
 });
+
 
 
