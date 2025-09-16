@@ -43,3 +43,7 @@ body{
 .grid-item{
     border: 1px solid lightgray;
 }
+
+.grid-item.no-border{
+    border: none;
+}
